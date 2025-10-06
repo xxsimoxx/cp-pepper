@@ -1,5 +1,5 @@
 name: ClassicPress Directory Coding Standard checks.
-on: [pull_request]
+on: [pull_request, push]
 jobs:
   always-pass:
     runs-on: ubuntu-latest
