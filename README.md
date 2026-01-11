@@ -9,7 +9,32 @@ This repository holds the releases and it's used by the [ClassicPress Directory]
 
 ## Overview
 
-The **ClassicPress Pepper Password Plugin** is designed to enhance the security of user passwords by implementing a unique "pepper" mechanism. This plugin allows administrators to generate and manage a pepper string that is used in conjunction with password hashing, adding an additional layer of protection against unauthorized access.
+The **ClassicPress Pepper Password Plugin** is designed to enhance the security of user passwords gap in how password hashes are protected, by implementing a unique **pepper** mechanism.  WordPress and ClassicPress store **salts** in wp-config.php, which can be compromised if the site is breached.
+
+This plugin allows administrators to generate and manage a pepper string that is used in conjunction with password hashing, adding an additional layer of protection against unauthorized access. This pepper - a secret value added to passwords before hashing - is stored separately **outside** the database.
+
+It:
+- Adds a secure pepper string managed independently.
+- Automates pepper generation and refreshing.
+- Requires using password resets when the pepper changes (users are not notified) - updates from previous hashing methods should be smoother.
+
+## Why Use It?
+
+- **Extra Layer of Security**  
+  Even if an attacker gets your database and salts, they can't crack passwords without access to the external pepper file.
+
+- **Low Maintenance**  
+  The plugin quietly handles pepper generation and management, including a one-click refresh feature.
+
+- **Great for Multi-User Sites**  
+  Reduces damage from mass credential leaks in breach scenarios.
+
+## When You Might Skip It
+
+You might not need this plugin if:
+- You're running a personal blog with no other users.
+- You already have advanced server-level protections.
+- You prioritize simplicity and minimal dependencies.
 
 ## Features
 
